@@ -1,0 +1,12 @@
+@mixin textOverflowEllopsis {
+  text-overflow: ellipsis;
+}
+
+
+div {
+  color: red;
+  p {
+    font-size: 12px;
+    @include textOverflowEllopsis;
+  }
+}
