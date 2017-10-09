@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 
 const app = express();
-const config = require('./config.js').getConfigDev()
+const config = require('./config.js');
 const compiler = webpack(config);
 const ipAddress = require('./ipAddress');
 
