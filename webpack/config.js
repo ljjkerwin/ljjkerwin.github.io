@@ -34,7 +34,10 @@ function getConfig() {
             use: [
               {
                 loader: 'css-loader',
-                query: 'sourceMap',
+                options: {
+                  sourceMap: process.env.NODE_ENV !== "production",
+                  minimize: process.env.NODE_ENV === "production"
+                }
               },
               {
                 loader: 'postcss-loader',
@@ -72,7 +75,7 @@ function getConfig() {
 }
 
 
-exports.getConfigDev = () => {
+const getConfigDev = () => {
   let config = getConfig();
 
   let entry = config.entry;
@@ -94,7 +97,28 @@ exports.getConfigDev = () => {
 };
 
 
+const getConfigBuild = () => {
+  let config = getConfig();
 
+  config.plugins = config.plugins.concat([
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+    }),
+    new (require('uglifyjs-webpack-plugin'))(),
+  ]);
+
+  return config;
+};
+
+
+
+const argv = process.argv;
+
+if (process.env.NODE_ENV === "production") {
+  module.exports = getConfigBuild();
+} else {
+  module.exports = getConfigDev();
+}
 
 
 function getEntry(dir) {
