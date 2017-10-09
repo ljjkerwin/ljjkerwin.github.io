@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="//192.168.10.211:3000/dist/css/index.css">
+  <script>
+    (function(){a();window.addEventListener("resize",a);function a(){var d=document.documentElement,b=d.clientWidth,c=parseInt(d.getAttribute("data-designWidth"))||750;b>768&&(b=768);d.style.fontSize=(b*100/c)+"px"}})();
+  </script>
+  <link rel="stylesheet" href="/dist/css/index.css">
 </head>
 <body>
-
-  <div>
-    <p>
-      rebuilding, wait a moment.
-    </p>
-  </div>
-  <script src="//192.168.10.211:3000/dist/js/index.js"></script>
+  <div id="root"></div>
+  <script src="/lib/fastclick/1.0.6/fastclick.js"></script>
+  <script src="/dist/js/index.js"></script>
 </body>
 </html>

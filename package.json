@@ -5,7 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./webpack/server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "antd-tools run dist",
+    "compile": "antd-tools run compile",
+    "clean": "antd-tools run clean",
+    "site": "antd-tools run site",
+    "deploy": "antd-tools run update-self && antd-tools run deploy",
+    "just-deploy": "antd-tools run just-deploy",
+    "pub": "antd-tools run update-self && antd-tools run pub",
+    "prepublish": "antd-tools run guard"
   },
   "repository": {
     "type": "git",
@@ -18,10 +26,14 @@
   },
   "homepage": "https://github.com/ljjkerwin/ljjkerwin.github.io#readme",
   "devDependencies": {
+    "antd-mobile": "^2.0.0-beta.4",
     "autoprefixer": "^7.1.5",
     "awesome-typescript-loader": "^3.2.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-import": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
     "express": "^4.16.1",
     "extract-text-webpack-plugin": "^3.0.1",

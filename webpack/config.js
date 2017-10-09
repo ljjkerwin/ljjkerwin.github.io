@@ -29,7 +29,6 @@ function getConfig() {
         },
         {
           test: /\.s?css$/,
-          exclude: /node_modules/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
@@ -61,6 +60,14 @@ function getConfig() {
         filename: 'css/[name].css',
       }),
     ],
+
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.css'],
+
+      alias: {
+        'modules': path.resolve(projectPath, './src/modules'),
+      }
+    },
   };
 }
 
@@ -71,6 +78,7 @@ exports.getConfigDev = () => {
   let entry = config.entry;
   for (let key in entry) {
     entry[key].unshift('webpack-hot-middleware/client?reload=true');
+    entry[key].push('./webpack/webpackCssHotReload.js');
   }
 
   config.plugins = config.plugins.concat([
@@ -79,6 +87,8 @@ exports.getConfigDev = () => {
     }),
     new webpack.HotModuleReplacementPlugin(),
   ]);
+
+  config.devtool = 'cheap-module-source-map';
 
   return config;
 };
