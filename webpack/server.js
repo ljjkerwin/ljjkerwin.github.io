@@ -29,7 +29,7 @@ app
 
 
 app.get('/:page', function(req, res, next) {
-  var page = req.params.page;
+  var page = req.params.page;console.log(page)
   if (!config.entry[page]) return next();
   res.render('template', {
     title: page,

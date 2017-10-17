@@ -25,7 +25,14 @@ function getConfig() {
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          loader: 'awesome-typescript-loader'
+          use: [
+            {
+              loader: 'babel-loader'
+            },
+            {
+              loader: 'awesome-typescript-loader'
+            }
+          ]
         },
         {
           test: /\.s?css$/,
